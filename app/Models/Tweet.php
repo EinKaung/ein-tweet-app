@@ -9,5 +9,7 @@ class Tweet extends Model
 {
     use HasFactory;
 
-    protected $table = 'tweet';
+    protected $connection = 'mysql';
+
+    protected $table = 'tweets';
 }

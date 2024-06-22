@@ -16,11 +16,11 @@ class TweetsSeeder extends Seeder
     public function run(): void
     {
         //
-        DB::table('tweets')->insert([
-            'content' => Str::random(100),
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
-        // Tweet::factory()->count(10)->create();
+        // DB::table('tweets')->insert([
+        //     'content' => Str::random(100),
+        //     'created_at' => now(),
+        //     'updated_at' => now(),
+        // ]);
+        Tweet::factory()->count(10)->create();
     }
 }
