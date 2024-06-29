@@ -22,7 +22,17 @@
     </div>
     <div>
     @foreach($tweets as $tweet)
-        <p>{{ $tweet->content }}</p>
+        <details>
+            <summary>{{ $tweet->content }}</summary>
+            <div>
+                <a href="{{ route('tweet.update.index', ['tweetId' => $tweet->id]) }}">編集</a>
+                <form action="{{ route('tweet.delete', ['tweetId' => $tweet->id]) }}" method="post">
+                    @method('DELETE')
+                    @csrf
+                    <button type="submit">削除</button>
+                </form>
+            </div>
+        </details>
     @endforeach
     </div>
 </body>
