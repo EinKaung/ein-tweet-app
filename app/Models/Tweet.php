@@ -12,4 +12,9 @@ class Tweet extends Model
     protected $connection = 'mysql';
 
     protected $table = 'tweets';
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
