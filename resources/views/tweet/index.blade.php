@@ -10,6 +10,9 @@
 @auth
     <div>
         <p>投稿フォーム</p>
+        @if (session('feedback.success'))
+            <p style="color: green">{{ session('feedback.success') }}</p>
+        @endif
         <form action="{{ route('tweet.create') }}" method="post">
             @csrf
             <label for="tweet-content">つぶやき</label>
