@@ -1,4 +1,4 @@
-<x-layout title="TOP | つぶやきアプリ">
+<x-layout title="TWEET APP">
     <x-layout.single>
         <h2 class="text-center text-indigo-500 text-4xl font-bold mt-8 mb-8">
             つぶやきアプリ
