@@ -10,49 +10,47 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class NewUserIntroduction extends Mailable implements ShouldQueue
+class DailyTweetCount extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
 
-    public $subject = '新しいユーザーが追加されました！！！';
     public User $toUser;
-    public User $newUser;
+    public int $count;
 
     /**
      * Create a new message instance.
      */
-    public function __construct(User $toUser, user $newUser)
+    public function __construct(User $toUser, int $count)
     {
         $this->toUser = $toUser;
-        $this->newUser = $newUser;
+        $this->count = $count;
     }
 
-
-    /**
-     * Get the message envelope.
-     */
+    // /**
+    //  * Get the message envelope.
+    //  */
     // public function envelope(): Envelope
     // {
     //     return new Envelope(
-    //         subject: "新しいユーザーが追加されました！！！",
+    //         subject: 'Daily Tweet Count',
     //     );
     // }
 
-    /**
-     * Get the message content definition.
-     */
+    // /**
+    //  * Get the message content definition.
+    //  */
     // public function content(): Content
     // {
     //     return new Content(
-    //         view: 'email.new_user_introduction', // view.name
+    //         view: 'view.name',
     //     );
     // }
 
-    /**
-     * Get the attachments for the message.
-     *
-     * @return array<int, \Illuminate\Mail\Mailables\Attachment>
-     */
+    // /**
+    //  * Get the attachments for the message.
+    //  *
+    //  * @return array<int, \Illuminate\Mail\Mailables\Attachment>
+    //  */
     // public function attachments(): array
     // {
     //     return [];
@@ -60,6 +58,7 @@ class NewUserIntroduction extends Mailable implements ShouldQueue
 
     public function build()
     {
-        return $this->markdown('email.new_user_introduction');
+        return $this->subject("昨日は{$this->count}件のつぶやきが追加されました！")
+            ->markdown('email.daily_tweet_count');
     }
 }
