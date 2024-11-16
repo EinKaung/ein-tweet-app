@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,8 +18,9 @@ class TweetFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' => 1, // つぶやきを投稿したユーザーのIDをデフォルトで１とする 
-            'content' => $this->faker->realText(50)
+            'user_id' => 1, // つぶやきを投稿したユーザーのIDをデフォルトで１とする
+            'content' => $this->faker->realText(50),
+            'created_at' => Carbon::now()->yesterday()
         ];
     }
 }
