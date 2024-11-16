@@ -41,7 +41,7 @@ function inputFormHandler() {
             const i = this.fields.length;
             this.fields.push({
                 file: '',
-                id: 'input-image-${i}'
+                id: `input-image-${i}`
             });
         },
         removeField(index) {
